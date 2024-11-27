@@ -1,0 +1,9 @@
+*.pyc
+__pycache__
+.env
+.env.local
+venv
+*.h5
+data/
+tests/
+docs/ 
