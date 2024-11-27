@@ -1,3 +1,4 @@
+import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Conv2D, MaxPooling2D, Flatten, Dropout
 from tensorflow.keras.utils import to_categorical
@@ -34,6 +35,13 @@ class MNISTModel:
             batch_size=batch_size,
             validation_split=validation_split
         )
+    
+    def save_model(self, path):
+        # 保存为TF Lite格式
+        converter = tf.lite.TFLiteConverter.from_keras_model(self.model)
+        tflite_model = converter.convert()
+        with open(path, 'wb') as f:
+            f.write(tflite_model)
     
     def predict(self, image):
         # 预处理输入图像

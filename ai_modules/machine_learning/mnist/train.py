@@ -16,7 +16,7 @@ def train_model():
     # 保存模型
     save_dir = os.path.join(os.path.dirname(__file__), 'saved_models')
     os.makedirs(save_dir, exist_ok=True)
-    model.model.save(os.path.join(save_dir, 'mnist_model.h5'))
+    model.save_model(os.path.join(save_dir, 'mnist_model.tflite'))
     
     # 保存训练历史
     with open(os.path.join(save_dir, 'training_history.json'), 'w') as f:
