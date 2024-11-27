@@ -5,9 +5,8 @@
             "src": "api/index.py",
             "use": "@vercel/python",
             "config": {
-                "maxLambdaSize": "15mb",
-                "runtime": "python3.11",
-                "pythonBuildArgs": ["--no-deps"]
+                "maxLambdaSize": "1024mb",
+                "runtime": "python3.11"
             }
         },
         {
