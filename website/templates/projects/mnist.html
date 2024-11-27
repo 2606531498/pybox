@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}手写数字识别 - AI学习平台{% endblock %}
+
+{% block content %}
+<div class="project-container">
+    <h1>手写数字识别</h1>
+    <p class="project-description">
+        使用深度学习模型识别手写数字，基于MNIST数据集训练。
+        在下方的画布上写下0-9之间的任意数字，系统将实时识别。
+    </p>
+    
+    <div class="drawing-container">
+        <canvas id="drawingCanvas" width="280" height="280"></canvas>
+        <div class="controls">
+            <button id="clearButton" class="button">清除</button>
+            <button id="predictButton" class="button primary">识别</button>
+        </div>
+    </div>
+    
+    <div class="result-container" style="display: none;">
+        <h2>识别结果</h2>
+        <div class="result">
+            <span class="digit">-</span>
+            <div class="confidence">
+                <div class="confidence-meter">
+                    <div class="fill" style="width: 0%"></div>
+                </div>
+                <span>置信度: <span class="value">0%</span></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/mnist.js') }}"></script>
+{% endblock %} 

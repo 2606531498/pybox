@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+*.h5
+*.model
+
+# 环境变量
+.env
+.env.local
+
+# 数据文件
+data/
+*.csv
+*.json
+
+# IDE
+.idea/
+.vscode/

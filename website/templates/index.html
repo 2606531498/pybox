@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}首页 - AI学习平台{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>欢迎来到AI学习平台</h1>
+    <p>在这里，我们将一起学习和实践AI技术，从基础概念到实际项目的开发</p>
+</div>
+
+<div class="projects">
+    <h2>项目展示</h2>
+    <div class="project-grid">
+        <div class="project-card">
+            <h3>手写数字识别</h3>
+            <p>使用深度学习识别手写数字，基于MNIST数据集</p>
+            <a href="{{ url_for('mnist_page') }}" class="button">立即体验</a>
+        </div>
+        
+        <div class="project-card">
+            <h3>情感分析</h3>
+            <p>使用自然语言处理分析文本情感倾向</p>
+            <a href="#" class="button">查看详情</a>
+        </div>
+        
+        <div class="project-card">
+            <h3>图像分类</h3>
+            <p>使用卷积神经网络进行图像分类</p>
+            <a href="#" class="button">查看详情</a>
+        </div>
+    </div>
+</div>
+
+<div class="learning-path">
+    <h2>学习路径</h2>
+    <div class="path-steps">
+        <div class="step">
+            <h3>1. Python基础</h3>
+            <p>掌握Python编程基础知识</p>
+        </div>
+        <div class="step">
+            <h3>2. 数学基础</h3>
+            <p>学习必要的数学概念</p>
+        </div>
+        <div class="step">
+            <h3>3. 机器学习基础</h3>
+            <p>理解机器学习核心概念</p>
+        </div>
+        <div class="step">
+            <h3>4. 深度学习实践</h3>
+            <p>动手实现深度学习项目</p>
+        </div>
+    </div>
+</div>
+{% endblock %} 
