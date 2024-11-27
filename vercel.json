@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "website/app.py",
+            "use": "@vercel/python",
+            "config": {
+                "runtime": "python3.9"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "website/app.py"
+        }
+    ],
+    "env": {
+        "FLASK_ENV": "production",
+        "PYTHON_VERSION": "3.9"
+    }
+} 
