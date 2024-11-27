@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tflite_runtime.interpreter as tflite
 import numpy as np
 from PIL import Image
 import io
@@ -12,7 +12,7 @@ class MNISTPredictor:
             'mnist_model.tflite'
         )
         # 加载TF Lite模型
-        self.interpreter = tf.lite.Interpreter(model_path=model_path)
+        self.interpreter = tflite.Interpreter(model_path=model_path)
         self.interpreter.allocate_tensors()
         
         # 获取输入输出细节
