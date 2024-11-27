@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tflite_runtime.interpreter as tflite
 import numpy as np
 from PIL import Image
 import io
@@ -9,9 +9,14 @@ class MNISTPredictor:
         model_path = os.path.join(
             os.path.dirname(__file__),
             'saved_models',
-            'mnist_model.h5'
+            'mnist_model.tflite'
         )
-        self.model = tf.keras.models.load_model(model_path)
+        self.interpreter = tflite.Interpreter(model_path=model_path)
+        self.interpreter.allocate_tensors()
+        
+        # 获取输入输出细节
+        self.input_details = self.interpreter.get_input_details()
+        self.output_details = self.interpreter.get_output_details()
     
     def predict(self, image_data):
         try:
@@ -22,10 +27,16 @@ class MNISTPredictor:
             image = image.reshape(1, 28, 28, 1)
             image = image.astype('float32') / 255
             
-            # 预测
-            prediction = self.model.predict(image)
-            digit = np.argmax(prediction[0])
-            confidence = float(prediction[0][digit])
+            # 设置输入
+            self.interpreter.set_tensor(self.input_details[0]['index'], image)
+            
+            # 运行推理
+            self.interpreter.invoke()
+            
+            # 获取输出
+            output = self.interpreter.get_tensor(self.output_details[0]['index'])
+            digit = np.argmax(output[0])
+            confidence = float(output[0][digit])
             
             return {
                 'digit': int(digit),
