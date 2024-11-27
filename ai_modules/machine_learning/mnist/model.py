@@ -37,11 +37,7 @@ class MNISTModel:
         )
     
     def save_model(self, path):
-        # 保存为TF Lite格式
-        converter = tf.lite.TFLiteConverter.from_keras_model(self.model)
-        tflite_model = converter.convert()
-        with open(path, 'wb') as f:
-            f.write(tflite_model)
+        self.model.save(path)
     
     def predict(self, image):
         # 预处理输入图像
